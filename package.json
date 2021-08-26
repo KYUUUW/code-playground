@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KYUUUW/code-playground/issues"
   },
-  "homepage": "https://github.com/KYUUUW/code-playground#readme"
+  "homepage": "https://github.com/KYUUUW/code-playground#readme",
+  "dependencies": {
+    "delay": "^5.0.0"
+  }
 }
