@@ -1,6 +1,8 @@
-const net = require("net");
-const ipaddr = "0.0.0.0";
-const port = 2031;
+const net = require('net');
+const fs = require('fs');
+
+const IP = "0.0.0.0";
+const PORT = 2031;
 
 const server = net.createServer((socket) => {
   console.log(socket.address().address + "connected.");
@@ -28,6 +30,6 @@ server.on("error", (err) => {
   console.log("err: ", err.code);
 });
 
-server.listen(port, ipaddr, () => {
+server.listen(PORT, IP, () => {
   console.log(`server listening on ${ipaddr}:${port}`);
 });

@@ -1,3 +1,4 @@
+const fs = require('fs');
 const net = require("net");
 const ipaddr = "0.0.0.0";
 const port = 2031;
@@ -5,17 +6,18 @@ const port = 2031;
 const server = net.createServer((socket) => {
   console.log(socket.address().address + "connected.");
 
-  // setting encoding
-  socket.setEncoding("utf-8");
+  const writeStream = fs.createWriteStream('./tmp/test.txt');
 
   // print data from client
   socket.on("data", (data) => {
     console.log(data.length);
+    writeStream.write(data);
   });
 
   // print message for disconnect with client
   socket.on("close", () => {
     console.log("disconnected.");
+    writeStream.end();
   });
 
   // sent message to client
@@ -31,3 +33,4 @@ server.on("error", (err) => {
 server.listen(port, ipaddr, () => {
   console.log(`server listening on ${ipaddr}:${port}`);
 });
+
